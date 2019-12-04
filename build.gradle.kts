@@ -81,8 +81,10 @@ val iosTest: Task by tasks.creating {
     doLast {
         exec {
             val device = project.findProperty("iosDevice")?.toString() ?: "iPhone 8"
-            commandLine( "xcrun", "simctl", "spawn",
-                "--standalone", device, testExecutable.outputFile.absolutePath)
+            commandLine(
+                "xcrun", "simctl", "spawn",
+                "--standalone", device, testExecutable.outputFile.absolutePath
+            )
         }
     }
 }
