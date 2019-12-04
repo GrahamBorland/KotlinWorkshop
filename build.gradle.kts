@@ -59,3 +59,11 @@ kotlin {
         }
     }
 }
+
+afterEvaluate {
+    tasks.withType<AbstractTestTask>().forEach {
+        it.testLogging {
+            events("passed", "skipped", "failed")
+        }
+    }
+}
