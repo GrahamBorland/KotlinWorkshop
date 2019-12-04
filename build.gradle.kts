@@ -97,3 +97,19 @@ val iosTest: Task by tasks.creating {
 }
 
 tasks.getByName("allTests").dependsOn(iosTest)
+
+val packForXcode by tasks.creating(Sync::class) {
+    val mode = System.getenv("CONFIGURATION") ?: "DEBUG"
+    val framework = kotlin.targets
+        .getByName<KotlinNativeTarget>("iosX64")
+        .binaries.getFramework(mode)
+    inputs.property("mode", mode)
+
+    dependsOn(framework.linkTask)
+
+    val targetDir = File(buildDir, "xcode-frameworks")
+    from({ framework.outputDirectory })
+    into(targetDir)
+}
+
+tasks.getByName("build").dependsOn(packForXcode)
