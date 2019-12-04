@@ -15,7 +15,13 @@ repositories {
 kotlin {
     jvm()
     js { browser() }
-    iosX64()
+    iosX64 {
+        binaries {
+            framework {
+                baseName = "businessLibrary"
+            }
+        }
+    }
 
     val os = org.gradle.internal.os.OperatingSystem.current()
     val hostTarget = when {
