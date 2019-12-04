@@ -1,0 +1,15 @@
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries/
+build/
+.DS_Store
+secure.gradle
+*.iml
+.irb-history
+.idea/
+captures
+*.keystore
+
+EvergreenApp/src/main/assets/helpContent-ForLocalDebugging
+
